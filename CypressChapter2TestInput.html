@@ -5,16 +5,27 @@
     <title>JavaScript Input Box Example</title>
   </head>
   <body>
+  
     <h1>JavaScript Input Box Example</h1>
-    <input type="text" id="input-box">
+    <input type="text" id="input-box"  maxlength="15" autofocus>
     <button onclick="showValue()">Show Value </button>
-    <p id="output"></p>
+    <p> You have <span id="output"> 15 </span>  characters left</p>
     <script>
+      let maxlength = 15;
+      let typedCharacters = 0; 
       function showValue() {
         const inputBox = document.getElementById("input-box");
         const output = document.getElementById("output");
         output.innerHTML = "The value entered is: " + inputBox.value;
       }
+      const inputfield = document.querySelector('#input-box');
+      const output = document.querySelector('#output');
+      
+        
+      inputfield.addEventListener('input', function() {
+        output.textContent = `${maxlength - inputfield.value.length}`;
+      });
+
     </script>
   </body>
 </html>
